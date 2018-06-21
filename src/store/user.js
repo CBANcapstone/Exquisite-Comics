@@ -1,6 +1,6 @@
 import * as firebase from 'firebase';
 
-const provider = new firebase.auth.GoogleAuthProvider();
+
 
 const GET_USER = 'GET_USER';
 const LOGIN = 'LOGIN';
@@ -12,11 +12,15 @@ export const logout = user => ({ type: LOGOUT, user });
 
 //Thunk creators
 export const auth = () => dispatch => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  console.log("****", provider)
 
   firebase.auth().signInWithPopup(provider).then(function(result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
     var token = result.credential.accessToken;
     // The signed-in user info.
+    console.log("****", provider, "#####", result)
+
     dispatch(login(result.user));
     // ...
   }).catch(function(error) {
@@ -32,5 +36,12 @@ export const auth = () => dispatch => {
 
 }
 
-
+export default function( state={}, action){
+  switch (action.type){
+    case LOGIN:
+      return action.user
+    default:
+    return state
+  }
+}
 

@@ -6,3 +6,5 @@ const config = {
   storageBucket: "exquisite-comics.appspot.com",
   messagingSenderId: "106821778451"
 };
+
+export default config;
