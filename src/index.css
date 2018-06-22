@@ -4,8 +4,25 @@ body {
   font-family: sans-serif;
 }
 
-canvas{
-  width:90vw;
-  height:30vh;
+canvas {
+  width: 90vw;
+  height: 30vh;
   border: 5px solid black;
+}
+
+.nav-parent {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #ddd;
+  padding: 1%;
+}
+
+.nav-child {
+  display: flex;
+}
+
+.nav-ch {
+  display: flex;
+  margin: 0 1em;
 }

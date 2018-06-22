@@ -129,13 +129,10 @@ export default class extends Component {
     picturesRef.push(pictue);
   };
   render() {
-    console.log(typeof this.state.pic);
-    const imageT =
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH0AAAB9CAYAAACPgGwlAAAC2UlEQVR42u3c3YkiQRQG0MlkcxFsFfHvXURETGdDMIQJYUPYUCYEd0voQZ1p3bWr5LaeCx+I+lDUobG6he/trQPT6/V+9Pv9n4PB4FfKcDg8REq9rrTGtNY30x68qqqPaNBNSWsF33L+buJ7V8BP4N/JtZiugdchB91AN9ANdOjQoUOHDh06dOjQoUOHDh06dOjQnw99NBodlsvlMek19CdHT8jr9fqw2+2OSa9zw5MLhH4JXgqeXBD0JvAS8OQCoN8Czw1PLgD6arW6CX4KD/0J0Lfb7T+jp7S92sm5TzfQDXQDHTp06NChQ4cOHTp06NChQ4cOHTp06NChQ4feQfToPW2SueOuaz1tkqHjros9bdKy485GvF6gQxfoAl2gC3SBLtAFukAX6AJdoEtU9LqnLdV+2Oj/r0op1W9XDP2y1CfShqa1TafTs5Ta3HtTst+uCPp3LU6RNnQ2mx0Wi8VZ0nsR0YsVGz6ipy3KZo7H4y/gdSaTSUj0IsWGj+hpi3yVnyYqevZiw0f0tEXZzGvg0dFz9dtlRd9sNuHR06GtCTx9Fh09deGFQk+/iU0FfZFO7vP5/At4ei/SCb4JPNe5I+tBrgk+2n3w6RUf6QpvQs8JXuSW7Tt4D1zuR88NXuzhzCU8yPvQS4AXfQxbw+c6fLxS6n0r9ezAHy7+cBHoAl2gC3SBLtAFukAX6AJdoEtb9KqqftuI10nyTuh7m/FS6Hs1oa8F/nHWD6sI+LmTfD/BVX8XOiwZ6Aa6gW6gQ4cOHTp06NChQ4cOHTp06NChQ4feefRr7VeXSd9t20FDLgD6tfarEi1O5AKgX2u/KtHxQi7Ib/ot+Ky1XSbOQa4JPnttl4l1er+EL1LbZeLdsp22XxWp7TLu0w10A91Ahw4dOnTo0KFDhw4dOnTo0KFDhw4dOvTHTRcrz461XaYV+r6D6HtyLaZrlWdntV2mHXwXKs+6Utv1B/bYnRxmWTliAAAALXRFWHRTb2Z0d2FyZQBieS5ibG9vZGR5LmNyeXB0by5pbWFnZS5QTkcyNEVuY29kZXKoBn/uAAAAAElFTkSuQmCC';
     return (
       <div>
         <h1>Canvas Page</h1>
-        <img src={imageT} />
+
         <Stage ref={node => (this.stageRef = node)} width={300} height={300}>
           <Layer>
             <Drawing />

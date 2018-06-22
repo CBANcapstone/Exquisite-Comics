@@ -12,9 +12,6 @@ export const getUser = user => ({ type: GET_USER, user });
 //Thunk creators
 export const loginThunk = () => dispatch => {
   auth.signInWithPopup(provider).then(result => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    // var token = result.credential.accessToken;
-    // The signed-in user info.
     dispatch(login(result.user));
   });
 };
@@ -29,7 +26,7 @@ export const getUserThunk = user => dispatch => {
   dispatch(getUser(user));
 };
 
-export default function(state = {}, action) {
+export default function(state = null, action) {
   switch (action.type) {
     case LOGIN:
       return action.user;
