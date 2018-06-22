@@ -7,24 +7,26 @@ export default class extends Component {
   constructor() {
     super();
     this.state = {
-      currentDrawing: ''
+      currentDrawing: '',
+      canvas : null,
+      context : null,
+      canvasSize : {
+        width : 1000,
+        height : 700
+      }
     };
   }
 
   componentDidMount() {
     const canvas = document.createElement('canvas');
-    canvas.width = 300;
-    canvas.height = 300;
+    canvas.width = this.state.canvasSize.width;
+    canvas.height = this.state.canvasSize.height;
     const context = canvas.getContext('2d');
-
     this.setState({ canvas, context });
   }
 
   handleMouseDown = () => {
-    console.log('mousedown');
     this.setState({ isDrawing: true });
-
-    // TODO: improve
     const stage = this.image.parent.parent;
     this.lastPointerPosition = stage.getPointerPosition();
   };
@@ -89,13 +91,14 @@ export default class extends Component {
     return (
       <div>
         <h1>Canvas Page</h1>
-        <Stage ref={node => (this.stageRef = node)} width={300} height={300}>
+        <Stage 
+        ref={node => (this.stageRef = node)} 
+        width={this.state.canvasSize.width} 
+        height={this.state.canvasSize.height}>
           <Layer>
             <Image
               image={canvas}
               ref={node => (this.image = node)}
-              width={300}
-              height={300}
               stroke="blue"
               onMouseDown={this.handleMouseDown}
               onMouseUp={this.handleMouseUp}
