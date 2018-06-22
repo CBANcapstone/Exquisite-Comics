@@ -3,10 +3,15 @@ import './App.css';
 import Home from './components/Home';
 
 
+import {CanvasB} from './components/index';
+
 class App extends Component {
   render() {
     return (
-      <Home />
+      <div className="App">
+        <CanvasB />
+        <Home />
+      </div>
     );
   }
 }
