@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginThunk, getUserThunk } from '../store';
-import firebase, { auth } from '../config/firebase';
+import { auth } from '../config/firebase';
 
 class Home extends Component {
   constructor(props) {

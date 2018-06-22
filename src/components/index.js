@@ -1,4 +1,2 @@
-
-export {default as CanvasA} from './canvasA';
-export {default as CanvasB} from './canvasB';
+export {default as Canvas} from './canvas/Canvas';
 export {default as Home} from './Home';
