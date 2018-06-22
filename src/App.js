@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getUserThunk } from './store';
 import './App.css';
 import { CanvasB, Home, Navbar, UserProfile } from './components';
+import Canvas from './components/canvas/Canvas';
 import firebase, { auth } from './config/firebase';
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route path="/login" component={Home} />
-          <Route path="/canvas" component={CanvasB} />
+          <Route path="/canvas" component={Canvas} />
           <Route path="/userProfile" component={UserProfile} />
         </Switch>
       </div>

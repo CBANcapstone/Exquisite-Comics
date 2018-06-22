@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 import { Stage, Layer, Rect, Image, Group } from 'react-konva';
 import firebase from 'firebase';
+import AllPictures from './PicsFromDB';
 
-class Drawing extends Component {
-  state = {
-    isDrawing: false,
-    mode: 'brush'
-  };
+export default class extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentDrawing: '',
+      canvas : null,
+      context : null,
+      canvasSize : {
+        width : 1000,
+        height : 700
+      }
+    };
+  }
 
   componentDidMount() {
     const canvas = document.createElement('canvas');
-    canvas.width = 300;
-    canvas.height = 300;
+    canvas.width = this.state.canvasSize.width;
+    canvas.height = this.state.canvasSize.height;
     const context = canvas.getContext('2d');
-
     this.setState({ canvas, context });
   }
 
   handleMouseDown = () => {
-    console.log('mousedown');
     this.setState({ isDrawing: true });
-
-    // TODO: improve
     const stage = this.image.parent.parent;
     this.lastPointerPosition = stage.getPointerPosition();
   };
@@ -75,84 +79,37 @@ class Drawing extends Component {
     }
   };
 
+  handleExportClick = () => {
+    let picture = this.stageRef.getStage().toDataURL();
+    console.log(picture);
+    const picturesRef = firebase.database().ref('Pictures');
+    picturesRef.push({ picture });
+  };
+
   render() {
     const { canvas } = this.state;
-    console.log(this.state, 'in drawing');
-
-    return (
-      <Image
-        image={canvas}
-        ref={node => (this.image = node)}
-        width={300}
-        height={300}
-        stroke="blue"
-        onMouseDown={this.handleMouseDown}
-        onMouseUp={this.handleMouseUp}
-        onMouseMove={this.handleMouseMove}
-      />
-    );
-  }
-}
-
-export default class extends Component {
-  state = {
-    pic: '',
-    allPictures: []
-  };
-  componentDidMount = () => {
-    const picturesRef = firebase.database().ref('Pictures');
-    picturesRef.on('value', snapshot => {
-      let pictures = snapshot.val();
-      let newState = [];
-      for (let pic in pictures) {
-        newState.push({
-          id: pic,
-          picture: pictures[pic].picture
-        });
-      }
-      this.setState({
-        allPictures: newState
-      });
-    });
-  };
-
-  handleExportClick = () => {
-    let pic = this.stageRef.getStage().toDataURL();
-    this.setState({
-      pic
-    });
-    // console.log('PICTYRE STRING >>>>', base64StringName);
-    const picturesRef = firebase.database().ref('Pictures');
-    const pictue = {
-      picture: pic
-    };
-    picturesRef.push(pictue);
-  };
-  render() {
     return (
       <div>
         <h1>Canvas Page</h1>
-
-        <Stage ref={node => (this.stageRef = node)} width={300} height={300}>
+        <Stage 
+        ref={node => (this.stageRef = node)} 
+        width={this.state.canvasSize.width} 
+        height={this.state.canvasSize.height}>
           <Layer>
-            <Drawing />
+            <Image
+              image={canvas}
+              ref={node => (this.image = node)}
+              stroke="blue"
+              onMouseDown={this.handleMouseDown}
+              onMouseUp={this.handleMouseUp}
+              onMouseMove={this.handleMouseMove}
+            />
           </Layer>
         </Stage>
 
         <button onClick={this.handleExportClick}>submit</button>
-        <div>
-          <h1>All pictures in database</h1>
-          <ul>
-            {this.state.allPictures.map(pic => {
-              return (
-                <div key={pic.id}>
-                  <li>{pic.picture}</li>
-                  <img src={pic.picture} width="100" height="100" />
-                </div>
-              );
-            })}
-          </ul>
-        </div>
+
+        <AllPictures />
       </div>
     );
   }
