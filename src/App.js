@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 // import Home from './components/Home';
-import { CanvasB, Home } from './components';
+import { Home } from './components';
+import Canvas from './components/canvas/Canvas'
 // import { getUserThunk } from './store';
 
 class App extends Component {
@@ -10,7 +11,7 @@ class App extends Component {
     return (
       <Switch>
         <Route path="/login" component={Home} />
-        <Route path="/canvas" component={CanvasB} />
+        <Route path="/canvas" component={Canvas} />
       </Switch>
     );
   }
