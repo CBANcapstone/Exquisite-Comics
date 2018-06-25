@@ -10,11 +10,11 @@ class Canvas extends Component {
     super();
     this.state = {
       currentDrawing: '',
-      canvas : null,
-      context : null,
-      canvasSize : {
-        width : 1000,
-        height : 700
+      canvas: null,
+      context: null,
+      canvasSize: {
+        width: 1000,
+        height: 700
       }
     };
   }
