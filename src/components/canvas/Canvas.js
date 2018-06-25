@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Stage, Layer, Rect, Image, Group } from 'react-konva';
 import firebase from 'firebase';
+import { db } from '../../config/firebase';
 import AllPictures from './PicsFromDB';
 
-export default class extends Component {
+class Canvas extends Component {
   constructor() {
     super();
     this.state = {
@@ -81,9 +83,23 @@ export default class extends Component {
 
   handleExportClick = () => {
     let picture = this.stageRef.getStage().toDataURL();
-    console.log(picture);
-    const picturesRef = firebase.database().ref('Pictures');
-    picturesRef.push({ picture });
+    // console.log(picture);
+    db.collection('drawings')
+    .add({picture})
+
+    .then(pic => {
+      db.collection('users')
+        .doc(this.props.user.email)
+        .update({
+          chapters: [...this.props.user.chapters,pic.id]
+        })
+
+      console.log(pic.id)
+    })
+    .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
+
   };
 
   render() {
@@ -91,9 +107,9 @@ export default class extends Component {
     return (
       <div>
         <h1>Canvas Page</h1>
-        <Stage 
-        ref={node => (this.stageRef = node)} 
-        width={this.state.canvasSize.width} 
+        <Stage
+        ref={node => (this.stageRef = node)}
+        width={this.state.canvasSize.width}
         height={this.state.canvasSize.height}>
           <Layer>
             <Image
@@ -114,3 +130,13 @@ export default class extends Component {
     );
   }
 }
+
+const mapState = state => {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(
+  mapState
+)(Canvas);
