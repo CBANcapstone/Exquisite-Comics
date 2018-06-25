@@ -1,4 +1,33 @@
-import { auth, provider } from '../config/firebase';
+import { db, auth, provider } from '../config/firebase';
+
+const userSession = (user, dispatch) => {
+  let { displayName, email, photoURL } = user;
+
+  db.collection('users')
+    .doc(email)
+    .get()
+    .then(user => {
+      if (user.exists) {
+        return user;
+      } else {
+        return db
+          .collection('users')
+          .doc(email)
+          .set({
+            displayName,
+            email,
+            photoURL,
+            chapters: []
+          });
+      }
+    })
+    .then(user => {
+      dispatch(getUser(user.data()));
+    })
+    .catch(error => {
+      console.error('Error adding document: ', error);
+    });
+};
 
 const GET_USER = 'GET_USER';
 const LOGIN = 'LOGIN';
@@ -12,7 +41,7 @@ export const getUser = user => ({ type: GET_USER, user });
 //Thunk creators
 export const loginThunk = () => dispatch => {
   auth.signInWithPopup(provider).then(result => {
-    dispatch(login(result.user));
+    userSession(result.user, dispatch);
   });
 };
 
@@ -23,7 +52,7 @@ export const logoutThunk = () => dispatch => {
 };
 
 export const getUserThunk = user => dispatch => {
-  dispatch(getUser(user));
+  userSession(user, dispatch);
 };
 
 export default function(state = null, action) {
