@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import { Stage, Layer, Rect, Image, Group } from 'react-konva';
 import firebase from 'firebase';
 import AllPictures from './PicsFromDB';
-import KomikCanvas from './komikCanvas';
 
 export default class extends Component {
   constructor() {
     super();
     this.state = {
       currentDrawing: '',
-      canvas : null,
-      context : null,
-      canvasSize : {
-        width : 1000,
-        height : 700
+      canvas: null,
+      context: null,
+      canvasSize: {
+        width: 1000,
+        height: 700
       }
     };
   }
@@ -90,15 +89,14 @@ export default class extends Component {
   render() {
     const { canvas } = this.state;
     return (
-              <Image
-              image={canvas}
-              ref={node => (this.image = node)}
-              stroke="blue"
-              onMouseDown={this.handleMouseDown}
-              onMouseUp={this.handleMouseUp}
-              onMouseMove={this.handleMouseMove}
-            />
-
+      <Image
+        image={canvas}
+        ref={node => (this.image = node)}
+        stroke="blue"
+        onMouseDown={this.handleMouseDown}
+        onMouseUp={this.handleMouseUp}
+        onMouseMove={this.handleMouseMove}
+      />
     );
   }
 }
