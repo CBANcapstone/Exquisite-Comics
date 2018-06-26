@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Image } from 'react-konva';
+import Photo from './Photo';
 
 export default class imagesForCanvas extends React.Component {
   state = {
@@ -18,6 +19,7 @@ export default class imagesForCanvas extends React.Component {
   }
 
   render() {
-    return <Image image={this.state.image} draggable />;
+    // return <Image name="rectange-name" image={this.state.image} draggable />;
+    return this.state.image && <Photo image={this.state.image} />;
   }
 }

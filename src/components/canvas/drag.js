@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { Stage, Layer, Image } from 'react-konva';
+import { Stage, Layer } from 'react-konva';
 import ImagesForCanvas from './imagesForCanvas';
 import SelectionBar from './SelectionBar';
+// import { Transformer } from 'konva';
 
 export default class extends Component {
   state = {
