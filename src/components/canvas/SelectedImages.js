@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Image } from 'react-konva';
-import Category from './Category';
 
 export default class extends React.Component {
   render() {
