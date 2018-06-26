@@ -1,42 +1,39 @@
 import React, { Component } from 'react';
 import Category from './Category';
-import SelectedImages from './SelectedImages';
+import ImageOptions from './ImageOptions';
 import {backgroundsArr, charactersArr, bubblesArr} from '../../initialData';
 
-export default class extends React.Component {
-  constructor(props) {
-    super(props);
+export default class extends Component {
+  constructor() {
+    super();
     this.categories = ['background', 'characters', 'textbubbles'];
+    this.images =  {
+          background: backgroundsArr,
+          characters: charactersArr,
+          textbubbles: bubblesArr
+      }
     this.state = {
-      images: []
+      imageId: ''
     };
   }
   handleClick = event => {
-    switch (event.target.id) {
-      case 'background':
-        this.setState({ images: backgroundsArr });
-        break;
-      case 'characters':
-        this.setState({ images: charactersArr });
-        break;
-      case 'textbubbles':
-        this.setState({ images: bubblesArr });
-        break;
-    }
+      this.setState({
+          imageId: event.target.id
+      })
   };
   render() {
     return (
-      <div>
-        <div className="horizontalFlex">
+      <div className='root-canvas-selection-bar-component'>
+        <div className="root-canvas-selection-bar-component-category">
           {this.categories &&
             this.categories.map(cat => {
-              return <Category category={cat} onClick={this.handleClick} />;
+              return <Category key={cat} category={cat} onClick={this.handleClick} />;
             })}
         </div>
-        <div className="horizontalFlex">
-          {this.state.images &&
-            this.state.images.map(img => {
-              return <SelectedImages src={img} click={this.props.click} />;
+        <div className="root-canvas-selection-bar-component-images">
+          {this.state.imageId &&
+            this.images[this.state.imageId].map((img, i) => {
+              return <ImageOptions key={i} src={img} click={this.props.click} />;
             })}
         </div>
       </div>

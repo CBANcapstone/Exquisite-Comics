@@ -27,17 +27,17 @@ canvas {
   margin: 0 1em;
 }
 
-#canvasInfo {
+.root-canvas-info {
   border: 3px solid grey;
   /* position: relative; */
   margin-top: 50vh;
 }
 
-.horizontalFlex {
+.root-canvas-selection-bar-component-category, .root-canvas-selection-bar-component-images {
   display: flex;
   flex-direction: row;
 }
 
-.selected-images-padding {
+.root-canvas-selection-bar-category, .root-canvas-selection-bar-images-options {
   padding: 1em;
 }
