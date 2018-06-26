@@ -1,23 +1,7 @@
 import React, { Component } from 'react';
 import Category from './Category';
 import SelectedImages from './SelectedImages';
-
-const backroundsArr = [
-  'http://konvajs.github.io/assets/yoda.jpg',
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcWjG2WyFhwn12hEara4aa_Ejw7aOjTCxFWl5gEAWuU1C23EjR',
-  'https://thumbs.dreamstime.com/z/comic-book-background-12720608.jpg'
-];
-const charactersArr = [
-  'http://konvajs.github.io/assets/darth-vader.jpg',
-  'http://cdn1-www.dogtime.com/assets/uploads/2009/06/affenpinscher.jpg',
-  'https://sonny.js.org/react-komik/dist/char1.png',
-  'https://sonny.js.org/react-komik/dist/char2.png',
-  'https://sonny.js.org/react-komik/dist/char2_magic.png'
-];
-const bubblesArr = [
-  'https://sonny.js.org/react-komik/dist/chat_left.svg',
-  'https://sonny.js.org/react-komik/dist/chat_right.svg'
-];
+import {backgroundsArr, charactersArr, bubblesArr} from '../../initialData';
 
 export default class extends React.Component {
   constructor(props) {
@@ -30,7 +14,7 @@ export default class extends React.Component {
   handleClick = event => {
     switch (event.target.id) {
       case 'background':
-        this.setState({ images: backroundsArr });
+        this.setState({ images: backgroundsArr });
         break;
       case 'characters':
         this.setState({ images: charactersArr });

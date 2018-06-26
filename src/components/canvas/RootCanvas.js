@@ -15,8 +15,10 @@ export default class extends Component {
 
   render() {
     return (
-      <div>
-        <SelectionBar click={this.handleClick} />
+      <div className='root-canvas'>
+        <div className='root-canvas-selection-bar'>
+          <SelectionBar click={this.handleClick} />
+        </div>
         <div id="canvasInfo">
           <Stage width={window.innerWidth} height="700">
             <Layer>
