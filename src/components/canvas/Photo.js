@@ -11,6 +11,7 @@ export default class Photo extends Component {
       yTop: 5,
       xRight: 280,
       yBottom: 280,
+      rotation: 0,
       draggable: true,
       fill: 'transparent'
     };
@@ -25,7 +26,6 @@ export default class Photo extends Component {
   }
 
   updateXandY() {
-    console.log('this.props.image>>>>', this.props.image);
     const image = new window.Image();
     image.src = this.props.imageUrl;
     this.setState({
@@ -100,7 +100,6 @@ export default class Photo extends Component {
 
   render() {
     const image = new window.Image();
-    image.crossOrigin = 'Anonymous';
     image.src = this.props.imageUrl;
 
     return (
@@ -161,7 +160,8 @@ export default class Photo extends Component {
           //   zIndex={this.props.zindex}
           draggable
         />
-        <Image //image added by user
+
+        <Image //image passed down thorugh props
           image={this.props.image}
           onMouseOver={this.circleShow}
           onMouseOut={this.circleHide}
@@ -169,6 +169,7 @@ export default class Photo extends Component {
           y={this.state.yTop}
           width={Math.abs(this.state.xRight - this.state.xLeft)}
           height={Math.abs(this.state.yBottom - this.state.yTop)}
+          rotation={this.state.rotation}
           //   zIndex={this.props.zindex}
         />
       </Group>
