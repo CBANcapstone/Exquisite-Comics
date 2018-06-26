@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Category from './Category';
 import SelectedImages from './SelectedImages';
 
+//CG: Make sure you are aware and CONCERNED about spelling mistakes. 
 const backroundsArr = [
   'http://konvajs.github.io/assets/yoda.jpg',
   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcWjG2WyFhwn12hEara4aa_Ejw7aOjTCxFWl5gEAWuU1C23EjR',
@@ -27,6 +28,7 @@ export default class extends React.Component {
       images: []
     };
   }
+  //this should screen not dry.
   handleClick = event => {
     switch (event.target.id) {
       case 'background':

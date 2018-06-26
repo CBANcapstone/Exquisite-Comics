@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+//CG: Leave a note regarding why this is okay to have here.
 const config = {
   apiKey: 'AIzaSyDW4x3Cvt28hIG3RV9KR4i7vKOBZ5ht-cg',
   authDomain: 'exquisite-comics.firebaseapp.com',

@@ -8,7 +8,7 @@ const getUserPictures = pictures => {
 }
 
 
-// [sdgd, sgd, ersdgtf]
+// [sdgd, sgd, ersdgtf] CG: WHY >:O
 export const getUserPicturesThunk = (pictures) => dispatch => {
   const pics = Promise.all(pictures.map(picId => {
     // return db.collection('pictures').where('id', '==', picId)

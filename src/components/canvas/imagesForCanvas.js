@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Image } from 'react-konva';
 import Photo from './Photo';
 
+//CG: Make sure you capitalize this.
 export default class imagesForCanvas extends React.Component {
   state = {
     image: null

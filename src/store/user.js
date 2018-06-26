@@ -1,8 +1,10 @@
 import { db, auth, provider } from '../config/firebase';
 
+//Associate action / action-creator / thunk with an action getUserSession etc.
+//CG: Make a folder callled utils.
 const userSession = (user, dispatch) => {
   let { displayName, email, photoURL } = user;
-
+  //CG: I would return this thing and .then off of it in your thunk to dispatch
   db.collection('users')
     .doc(email)
     .get()

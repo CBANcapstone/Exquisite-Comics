@@ -6,7 +6,7 @@
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
-
+/* Choose ems and stick with ems or stick with pixels.  */
 .App-header {
   background-color: #222;
   height: 150px;

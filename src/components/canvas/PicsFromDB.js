@@ -26,6 +26,7 @@ export default class extends Component {
     });
   };
 
+  //CG:es-lint or prettier suggested here
   render() {
       return (
         <div>
