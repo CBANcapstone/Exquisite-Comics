@@ -3,8 +3,7 @@ import { withRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserThunk } from './store';
 import './App.css';
-import { CanvasB, Home, Navbar, UserProfile, Drag } from './components';
-import Canvas from './components/canvas/Canvas';
+import { Canvas, Home, Navbar, UserProfile, RootCanvas } from './components';
 import firebase, { auth } from './config/firebase';
 
 class App extends Component {
@@ -23,7 +22,7 @@ class App extends Component {
           <Route path="/login" component={Home} />
           <Route path="/canvas" component={Canvas} />
           <Route path="/userProfile" component={UserProfile} />
-          <Route path="/drag" component={Drag} />
+          <Route path="/rootCanvas" component={RootCanvas} />
         </Switch>
       </div>
     );

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { Image } from 'react-konva';
 
-export default class extends React.Component {
+export default class extends Component {
   render() {
     return (
       <div
         id={this.props.category}
         onClick={this.props.onClick}
-        className="selected-images-padding">
+        className="root-canvas-selection-bar-category">
         {this.props.category}
       </div>
     );

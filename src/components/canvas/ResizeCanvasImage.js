@@ -3,7 +3,7 @@ import { Group, Image, Circle } from 'react-konva';
 import Konva from 'konva';
 
 //photo resizing
-export default class Photo extends Component {
+export default class ResizeCanvasImage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -115,7 +115,6 @@ export default class Photo extends Component {
             this.anchor = anchor;
           }}
           radius={10}
-          //   zIndex={this.props.zindex}
           draggable
         />
         <Circle //bottom-left resize guide
@@ -129,7 +128,6 @@ export default class Photo extends Component {
             this.anchor = anchor;
           }}
           radius={10}
-          //   zIndex={this.props.zindex}
           draggable
         />
         <Circle //top-right resize guide
@@ -143,7 +141,6 @@ export default class Photo extends Component {
             this.anchor = anchor;
           }}
           radius={10}
-          //   zIndex={this.props.zindex}
           draggable
         />
         <Circle //top-left resize guide
@@ -157,7 +154,6 @@ export default class Photo extends Component {
             this.anchor = anchor;
           }}
           radius={10}
-          //   zIndex={this.props.zindex}
           draggable
         />
 
