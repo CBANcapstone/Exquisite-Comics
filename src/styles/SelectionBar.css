@@ -1,0 +1,5 @@
+.root-canvas-selection-bar-component-category,
+.root-canvas-selection-bar-component-images {
+  display: flex;
+  flex-direction: row;
+}
